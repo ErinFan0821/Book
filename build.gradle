@@ -1,0 +1,11 @@
+apply plugin:'war'
+apply plugin: 'idea'
+apply plugin: 'jetty'
+
+task initProject << {
+    sourceSets.all { sourceSet ->
+        sourceSet.allJava.srcDirs.each {
+            it.exists() || it.mkdirs()
+        }
+    }
+}
